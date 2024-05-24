@@ -1,0 +1,64 @@
+---
+"Real-time Clickstream Analytics with Streamlit and Apache Pinot (StarTree Cloud - Dedicated and Serverless)"
+---
+
+# Real-time Clickstream Analytics with Streamlit and Apache Pinot (StarTree Cloud - Dedicated and Serverless)
+
+## Business Need
+An e-commerce company seeks to enhance user engagement, streamline the customer journey, and ultimately drive higher conversion rates. To achieve this, they require real-time visibility into user behavior patterns and the effectiveness of their website's design and content.
+
+## Solution
+Apache Pinot, a real-time OLAP data store, will be employed to capture and analyze clickstream data. StarTree Cloud, a managed SaaS for Pinot, will ensure seamless deployment and scalability. A Streamlit app will be developed to transform this raw data into actionable insights, empowering the company to make data-driven decisions.
+
+## Insights Provided by the Dashboard
+- **Event Counts by Type**
+- **Average Duration by Event Type**
+
+## Decision-Making Impact
+- **Content Optimization:** Identify underperforming pages or sections and optimize them based on user engagement metrics.
+- **Conversion Funnel Enhancement:** Analyze the user flow through the purchase funnel and pinpoint areas with high abandonment rates.
+- **Personalization:** Tailor website content and recommendations based on real-time user behavior patterns.
+- **A/B Testing:** Evaluate the impact of website changes by comparing clickstream data before and after the modifications.
+- **Marketing Campaign Effectiveness:** Assess the success of marketing campaigns by tracking the clickstream data of users who originated from those campaigns.
+
+## Steps for Creating a Streamlit App
+
+### In Scope
+1. **Connection:** Securely connect to the StarTree Cloud instance using the provided credentials.
+2. **Prepare Data:** Use sample data to try the recipe.
+3. **Data Ingestion:** Ingest data to Pinot.
+4. **Querying Pinot:** Leverage the Pinot Python SDK to execute SQL queries and extract relevant clickstream data.
+5. **Visualization:** Utilize Streamlit's interactive components (charts, tables, filters) to create a dynamic dashboard.
+
+### Sample Data Preparation
+- **Generate Sample Data:** [For this recipe, use this sample data](https://drive.google.com/file/d/1NYSb8TA-Gwvene4lrFeW9GvrEJhI1RJl/view?usp=sharing)
+
+### Ingest Data
+- **Ingest the Data:** Use StarTree Cloud's “Data Manager” [link](https://dev.startree.ai/docs/use-data-manager/upload-file) or the Pinot API [link](https://docs.google.com/document/d/1Mx7N8i_yPK0JwqK8PE7AGf4kqgFK8YEgLgaOoD_m8ZE/edit?usp=sharing).
+
+### Steps to Install Streamlit on Laptop
+- Run this command in the terminal: `pip install streamlit pandas altair requests` (Pre-requisite: Python is installed on your laptop [link]).
+- Execute this Python script to launch a Streamlit app that connects to Pinot and generates an interactive dashboard.
+
+## Step-by-Step Instructions
+1. **Generate Basic Auth Token (Dedicated) or Bearer Token (Serverless):** Use the provided Python snippet to generate the Basic Auth token.
+2. **Update Broker URL and Token:** Replace `<your-broker-url>` and `<your-basic-auth-token>` (dedicated) or `<your-bearer-auth-token>` (Serverless) in the script with your actual StarTree Cloud broker URL and Basic Auth token. For serverless, make sure to pass the “Database parameter” (i.e., workspace name) in the header.
+3. **Install Required Packages:** Ensure you have the necessary Python packages installed:
+    ```bash
+    pip install streamlit pandas altair requests
+    ```
+4. **Run the Streamlit Application (for dedicated StarTree):** Run the Streamlit application with the following command:
+    ```bash
+    streamlit run streamlit_app.py 
+    ```
+    **Run the Streamlit Application (for serverless StarTree):** Run the Streamlit application with the following command:
+    ```bash
+    streamlit run streamlit_app_serverless.py 
+    ```
+    Pre-requisite: Save the Python script written below.
+
+5. **Access the Dashboard:** Navigate to `http://localhost:8501` in your web browser to see the updated dashboard connected to StarTree Cloud.
+
+## Note
+Before running the script, make sure to replace the Pinot Broker URL and Basic or Bearer Auth Token.
+streamlit_app.py and streamlit_app_serverless.py are available in this project repository
